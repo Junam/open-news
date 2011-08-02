@@ -1,4 +1,4 @@
-package com.open.news;
+package org.openews;
 
 import android.os.Bundle;
 
