@@ -1,11 +1,13 @@
-#content {
-	display: table;
-}
-
-main-nav-button {
-	display: table-cell;
-	width: 50px;
-	height: 50px;
+.main-nav-button {
+	border: solid 2px;
 	padding: 5px;
-	background: #467612
+	background: #467612;
+	border-radius: 10px;
+	background-image: -moz-linear-gradient(top, 
+							#fff, 
+							#faeb9e);
+	background-image: -webkit-gradient(linear,left top,left bottom,
+		color-stop(0, 		#fff),
+		color-stop(1, 		#faeb9e));
+  	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#faeb9e')";
 }
