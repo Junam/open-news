@@ -1,13 +1,9 @@
 .main-nav-button {
 	border: solid 2px;
 	padding: 5px;
-	background: #467612;
+	margin: 5px;
 	border-radius: 10px;
-	background-image: -moz-linear-gradient(top, 
-							#fff, 
-							#faeb9e);
-	background-image: -webkit-gradient(linear,left top,left bottom,
-		color-stop(0, 		#fff),
-		color-stop(1, 		#faeb9e));
-  	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#faeb9e')";
+	text-align: center;
+	background: transparent url("images/blue.jpg");
+	font-family: Helvetica, Arial, sans-serif;
 }

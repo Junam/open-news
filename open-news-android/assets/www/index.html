@@ -8,6 +8,18 @@
 <script type="text/javascript" src="jquery-1.6.1.js"></script>
 <script type="text/javascript" src="jquery.mobile-1.0b1.js"></script>
 
+<style type="text/css">
+.ui-page {
+	background-image: url("images/blue.jpg") -moz-linear-gradient(top, 
+							#f0f0f0,
+							#e9eaeb);
+	background-image: url("images/blue.jpg") -webkit-gradient(linear,left top,left bottom,
+			color-stop(0, 	#f0f0f0),
+			color-stop(1, 	#e9eaeb));
+	/*background: transparent url("images/blue.jpg");*/
+}
+</style>
+
 </head>
 <body>
 
@@ -35,6 +47,7 @@
 			<!-- /navbar -->
 		</div>
 		<!-- /header -->
+		<div class="main-nav-button" data-role="button">button</div>
 		<div id="contnet" data-role="content">
 			<div class="ui-grid-a">
 				<div class="ui-block-a">
