@@ -4,6 +4,10 @@
 	margin: 5px;
 	border-radius: 10px;
 	text-align: center;
-	background: transparent url("images/blue.jpg");
+	background: url(images/blue.jpg) 10px 10px no-repeat; 
+	background-size: contain; 
+	-o-background-size : contain; 
+	-webkit-background-size :contain; 
+	-moz-background-size : contain;
 	font-family: Helvetica, Arial, sans-serif;
 }
