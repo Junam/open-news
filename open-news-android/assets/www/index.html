@@ -1,92 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>open news</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="lib/sencha-touch.js"></script>
 <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-<link rel="stylesheet" href="jquery.mobile-1.0b1.css" />
-<link rel="stylesheet" href="css/styles.css" />
-<script type="text/javascript" src="jquery-1.6.1.js"></script>
-<script type="text/javascript" src="jquery.mobile-1.0b1.js"></script>
+<link href="css/sencha-touch.css" rel="stylesheet" type="text/css" />
+<link href="css/codebox.css" rel="stylesheet" type="text/css" />
+<link href="css/sink.css" rel="stylesheet" type="text/css" />
 
-<style type="text/css">
-.ui-page {
-	background-image: url("images/blue.jpg") -moz-linear-gradient(top, 
-							#f0f0f0,
-							#e9eaeb);
-	background-image: url("images/blue.jpg") -webkit-gradient(linear,left top,left bottom,
-			color-stop(0, 	#f0f0f0),
-			color-stop(1, 	#e9eaeb));
-	/*background: transparent url("images/blue.jpg");*/
+<style>
+.hello {
+	background: #ffffff;
+	background-image: url(images/hello.jpg);
+}
+
+.world {
+	background: #ffffff;
+	background-image:
+		url(http://src.sencha.io/320/http://www.unc.edu/world/College_Updates_2009/world-globe.jpg);
+	background-repeat: no-repeat;
 }
 </style>
 
+<script type="text/javascript">
+
+new Ext.Application({
+    launch: function() {
+    	var cfg = {
+    		    layout: {
+    		        type: 'vbox',
+    		        pack: 'center',
+    		        align: 'stretch'
+    		    },
+    		    scroll: 'vertical',
+    		    defaults: {
+    		        layout: {
+    		            type: 'hbox'
+    		        },
+    		        flex: 1,
+    		        defaults: {
+    		            xtype: 'button',
+    		            flex: 1
+    		        }
+    		    }
+    		};
+
+    		
+    		    cfg.items = [{
+    		        items: [
+    		            { text: 'Normal' },
+    		            { ui: 'round', text: 'Round' },
+    		            { ui: 'small', text: 'Small' }
+    		        ]
+    		    }, {
+    		        items: [
+    		            { ui: 'decline', text: 'Decline' },
+    		            { ui: 'decline-round', text: 'Round' },
+    		            { ui: 'decline-small', text: 'Small' }
+    		        ]
+    		    }, {
+    		        items: [
+    		            { ui: 'confirm', text: 'Confirm' },
+    		            { ui: 'confirm-round', text: 'Round' },
+    		            { ui: 'confirm-small', text: 'Small' },
+    		            { ui: 'back', text: 'Back' }
+    		        ]
+    		    }];
+
+    		    cfg.dockedItems = [{
+    		        xtype: 'toolbar',
+    		        dock: 'bottom',
+    		        defaults: {
+    		            xtype: 'button',
+    		            text: 'Test',
+    		            flex: 1
+    		        },
+    		        items: [{
+    		            ui: 'round'
+    		        }, {
+    		            ui: 'drastic'
+    		        }, {
+    		            ui: 'action'
+    		        }, {
+    		            ui: 'decline-round'
+    		        }, {
+    		            ui: 'decline-small'
+    		        }, {
+    		            ui: 'confirm-round'
+    		        }, {
+    		            ui: 'confirm-small'
+    		        }]
+    		    }];
+    		
+
+    		demos.Buttons = new Ext.Panel(cfg);
+    }
+});
+
+	</script>
 </head>
 <body>
-
-	<div id="home" data-role="page">
-
-		<div data-role="header" role="banner" data-position="fixed">
-			<h2 class="ui-title">openews.org</h2>
-			<a href="index.html" data-icon="gear"
-				class="ui-btn-right ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-a"
-				data-theme="a"><span class="ui-btn-inner ui-btn-corner-all"><span
-					class="ui-btn-text">Options</span><span
-					class="ui-icon ui-icon-gear ui-icon-shadow"></span> </span> </a>
-
-			<div data-role="navbar">
-				<ul>
-					<li><a href="index.html" data-role="button" data-icon="delete"
-						data-iconpos="notext"></a></li>
-					<li><a href="index.html" data-role="button" data-icon="gear"
-						data-iconpos="notext"></a></li>
-					<li><a href="qwe.html" data-role="button" data-icon="refresh"
-						data-rel="page" data-iconpos="notext"></a></li>
-
-				</ul>
-			</div>
-			<!-- /navbar -->
-		</div>
-		<!-- /header -->
-		<div class="main-nav-button" data-role="button">button</div>
-		<div id="contnet" data-role="content">
-			<div class="ui-grid-a">
-				<div class="ui-block-a">
-					<div class="main-nav-button">
-						<p>new report</p>
-					</div>
-				</div>
-				<div class="ui-block-b">
-					<div class="main-nav-button">
-						<p>new report</p>
-					</div>
-				</div>
-				<div class="ui-block-a">
-					<div class="main-nav-button">
-						<p>new report</p>
-					</div>
-				</div>
-				<div class="ui-block-b">
-					<div class="main-nav-button">
-						<p>new report</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /content -->
-
-		<div data-role="footer" data-theme="e">
-			<h4>Page Footer</h4>
-		</div>
-		<!-- /footer -->
-	</div>
-	<!-- /page -->
-
-	<div id="new-report" data-role="page">
-		<h1>New Report</h1>
-
-	</div>
-
-
 
 </body>
 </html>

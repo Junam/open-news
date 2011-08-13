@@ -2,12 +2,8 @@
 	border: solid 2px;
 	padding: 5px;
 	margin: 5px;
-	border-radius: 10px;
+	border-radius: 3px;
 	text-align: center;
-	background: url(images/blue.jpg) 10px 10px no-repeat; 
-	background-size: contain; 
-	-o-background-size : contain; 
-	-webkit-background-size :contain; 
-	-moz-background-size : contain;
+	background: url(images/blue.jpg) 10px 10px no-repeat;
 	font-family: Helvetica, Arial, sans-serif;
 }
