@@ -24,77 +24,84 @@
 </style>
 
 <script type="text/javascript">
-
-new Ext.Application({
-    launch: function() {
-    	var cfg = {
-    		    layout: {
-    		        type: 'vbox',
-    		        pack: 'center',
-    		        align: 'stretch'
-    		    },
-    		    scroll: 'vertical',
-    		    defaults: {
-    		        layout: {
-    		            type: 'hbox'
-    		        },
-    		        flex: 1,
-    		        defaults: {
-    		            xtype: 'button',
-    		            flex: 1
-    		        }
-    		    }
-    		};
-
-    		
-    		    cfg.items = [{
-    		        items: [
-    		            { text: 'Normal' },
-    		            { ui: 'round', text: 'Round' },
-    		            { ui: 'small', text: 'Small' }
-    		        ]
-    		    }, {
-    		        items: [
-    		            { ui: 'decline', text: 'Decline' },
-    		            { ui: 'decline-round', text: 'Round' },
-    		            { ui: 'decline-small', text: 'Small' }
-    		        ]
-    		    }, {
-    		        items: [
-    		            { ui: 'confirm', text: 'Confirm' },
-    		            { ui: 'confirm-round', text: 'Round' },
-    		            { ui: 'confirm-small', text: 'Small' },
-    		            { ui: 'back', text: 'Back' }
-    		        ]
-    		    }];
-
-    		    cfg.dockedItems = [{
-    		        xtype: 'toolbar',
-    		        dock: 'bottom',
-    		        defaults: {
-    		            xtype: 'button',
-    		            text: 'Test',
-    		            flex: 1
-    		        },
-    		        items: [{
-    		            ui: 'round'
-    		        }, {
-    		            ui: 'drastic'
-    		        }, {
-    		            ui: 'action'
-    		        }, {
-    		            ui: 'decline-round'
-    		        }, {
-    		            ui: 'decline-small'
-    		        }, {
-    		            ui: 'confirm-round'
-    		        }, {
-    		            ui: 'confirm-small'
-    		        }]
-    		    }];
-    		
-
-    		demos.Buttons = new Ext.Panel(cfg);
+document.addEventListener("deviceready", function () {
+    alert('Our first PhoneGap app');
+  }, false);
+  
+Ext.setup({
+    icon: 'icon.png',
+    tabletStartupScreen: 'tablet_startup.png',
+    phoneStartupScreen: 'phone_startup.png',
+    glossOnIcon: false,
+    onReady: function() {
+        var tabpanel = new Ext.TabPanel({
+            fullscreen: true,
+            // type: 'light',
+            tabBar: {
+                dock: 'bottom',
+                scroll: 'horizontal',
+                sortable: true,
+                layout: {
+                    pack: 'center'
+                }
+            },
+            cls: 'card1',
+            html: 'Both toolbars and tabbars have built-in, ready to use icons. Styling custom icons is no hassle.<p><small>If you cant see all of the buttons below, try scrolling left/right.</small></p>',
+            items: [
+                { iconCls: 'bookmarks', title: 'Bookmarks' },
+                { iconCls: 'download', title: 'Download' },
+                { iconCls: 'favorites', title: 'Favorites' },
+                { iconCls: 'info', title: 'Info' },
+                { iconCls: 'more', title: 'More' },
+                { iconCls: 'search', title: 'Search' },
+                { iconCls: 'settings', title: 'Settings' },
+                { iconCls: 'team', title: 'Team' },
+                { iconCls: 'time', title: 'Time' },
+                { iconCls: 'user', title: 'User' }
+            ],
+            dockedItems: [{
+                xtype: 'toolbar',
+                dock: 'top',
+                defaults: {
+                    ui: 'plain'
+                },
+                scroll: 'horizontal',
+                layout: {
+                    pack: 'center'
+                },
+                defaults: {
+                    iconMask: true,
+                    ui: 'plain'
+                },
+                items: [{
+                    iconCls: 'action'
+                }, {
+                    iconCls: 'add'
+                }, {
+                    iconCls: 'arrow_up'
+                }, {
+                    iconCls: 'arrow_right'
+                }, {
+                    iconCls: 'arrow_down'
+                }, {
+                    iconCls: 'arrow_left'
+                }, {
+                    iconCls: 'compose'
+                }, {
+                    iconCls: 'delete'
+                }, {
+                    iconCls: 'refresh'
+                }, {
+                    iconCls: 'reply'
+                }, {
+                    iconCls: 'search'
+                }, {
+                    iconCls: 'star'
+                }, {
+                    iconCls: 'trash'
+                }]
+            }]
+        });
     }
 });
 
