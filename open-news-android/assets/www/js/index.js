@@ -6,30 +6,115 @@ Ext.setup({
     glossOnIcon: false,
     onReady: function() {
     	
-    	var reportButton =  new Ext.Button({
-//    		style: 'background: transparent',
-            ui  : 'decline',
-            text: 'Report',
+    	var reportButton =  new Ext.Panel({
+    		cls: "homeBtn",
+    		flex: 1,
+            html: "<div >" +
+            		"<div style='height:60%; text-align: center;'>" +
+            			"<img  src='images/newreport.png' class='home-btn-img'/>" +
+    				"</div>" + 
+    				"<div class='home-btn-label-wrapper'>" +
+            			"<div class='home-btn-label'>" + 
+            				"<span class='btn-title'>NEW REPORT</span>"+
+            				"<br/>" +
+            				"<span class='badge' >4</span>" +
+            				" new reports near you " + 
+        				"</div>" +
+    				"</div>" +
+           		"</div>",
+	   		listeners: {
+	   	        click: function()
+	   	        {
+	   	        	
+	   	        	this.dom.parentNode.setAttribute("class", "shadow")
+	   	        	
+	   	        
+	   	        },
+	   	        element: 'body'
+	   	    },
+        });
+    	var readButton =  new Ext.Panel({    		
+    		
+    		cls: "homeBtn",
+    		flex: 1,
+            html: "<div>" +
+    		"<div style='height:60%; text-align: center;'>" +
+    			"<img src='images/read.png' class='home-btn-img'/>" +
+			"</div>" + 
+			"<div class='home-btn-label-wrapper'>" +
+    			"<div class='home-btn-label'>" + 
+    			"<span class='btn-title'>READ</span>"+
+    				"<br/>" +
+    				"<span class='badge' >4</span>" +
+    				" new reports near you " + 
+				"</div>" +
+			"</div>" +
+   		"</div>",
+		listeners: {
+	        click: function()
+	        {
+	        	this.dom.setAttribute("class", "shadow")
+	        	
+	        
+	        },
+	        element: 'body'
+	    },
+	    });
+    	
+    	var publishButton =  new Ext.Panel({
+    		cls: "homeBtn",
+    		flex: 1,
+            html: "<div>" +
+            		"<div style='height:60%; text-align: center;'>" +
+            			"<img src='images/publish.png' class='home-btn-img'/>" +
+    				"</div>" + 
+    				"<div class='home-btn-label-wrapper'>" +
+            			"<div class='home-btn-label'>" + 
+            			"<span class='btn-title'>PUBLISH</span>"+
+            				"<br/>" +
+            				"<span class='badge' >4</span>" +
+            				" new reports near you " + 
+        				"</div>" +
+    				"</div>" +
+           		"</div>",
+	   		listeners: {
+	   	        click: function()
+	   	        {
+	   	        	this.dom.setAttribute("class", "shadow")
+	   	        	
+	   	        
+	   	        },
+	   	        element: 'body'
+	   	    },
             
         });
-    	var readButton =  new Ext.Button({
-    		ui  : 'decline',
-    		text: 'Read',
-    	});
-    	
-    	var publishButton =  new Ext.Button({
-    		ui  : 'decline',
-    		badgeText : '1',
-    		text: 'Publish',
-    	});
-    	var followUpButton =  new Ext.Button({
-    		ui  : 'decline',
-    		text: ' Follow Up',
-    		centered: true,
-    		iconCls: 'action',
-    		iconMask: true
-    		
-    	});
+    	var followUpButton =  new Ext.Panel({
+    		cls: "homeBtn",
+    		flex: 1,
+            html: "<div>" +
+            		"<div style='height:60%; text-align: center;'>" +
+            			"<img src='images/followup.png' class='home-btn-img'/>" +
+    				"</div>" + 
+    				"<div class='home-btn-label-wrapper'>" +
+            			"<div class='home-btn-label'>" + 
+            			"<span class='btn-title'>FOLLOW UP</span>"+
+            				"<br/>" + 
+            				"<span class='badge' >4</span>" +
+            				" new reports near you " + 
+        				"</div>" +
+    				"</div>" +
+           		"</div>",
+	   		listeners: {
+	   	        click: function()
+	   	        {
+	   	        	this.dom.setAttribute("class", "shadow")
+	   	        	
+	   	        
+	   	        },
+	   	        element: 'body'
+	   	    },
+            
+        });
         
     	// top
     	var topHbox = new Ext.Panel({
@@ -37,13 +122,13 @@ Ext.setup({
     			type: 'hbox',
                 pack: 'center'
             },
-            flex: 1,
-    		style:"border: 1px solid red ",
+            flex: 2,
+    		style:"",
     		defaults: {
-    			width: 120,
-    			height:100,
-    			margin: 10,
-    			style: 'font-size: 0.8em',
+//    			width: 230,
+//    			height:200,
+//    			margin: 10,
+    			style: 'font-size: 0.8em; margin-top: 20%;',
              },
     		items:[
     		       reportButton,
@@ -58,13 +143,13 @@ Ext.setup({
     			type: 'hbox',
                 pack: 'center'
             },
-            flex: 1,
-    		style:"border: 1px solid green",
+            flex: 2,
+    		style:"",
     		defaults: {
-    			width: 120,
-    			height:100,
-    			margin: 10,
-    			style: 'font-size: 0.8em',
+//    			width: 230,
+//    			height:200,
+//    			margin: 10,
+    			style: 'font-size: 0.8em ;margin-bottom: 20% ',
              },
     		items:[
 					publishButton,
@@ -78,7 +163,15 @@ Ext.setup({
     			type: 'vbox',
                 pack: 'center'
             },
-            baseCls: 'bg',
+            html: 
+    		"<div style='position:absolute; z-index:0;height:100%; width:100%; text-align: center;'>" +
+    			"<img src='images/blue.jpg' style='height:99%; width:99%;'/>" +
+			"</div>",
+            defaults: {
+            	
+            	
+            },
+//            baseCls: 'bg',
     		items: [
     		        topHbox,
     		        bottomHbox
