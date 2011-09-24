@@ -1,10 +1,128 @@
 
-Ext.setup({
-    icon: 'icon.png',
-    tabletStartupScreen: 'tablet_startup.png',
-    phoneStartupScreen: 'phone_startup.png',
-    glossOnIcon: false,
-    onReady: function() {
+var App = new Ext.Application({
+    name : 'agendaApp',
+    useLoadMask : true,
+    launch : function () {
+    	
+    	
+    	/*reportEditor start*/
+    	agendaApp.views.reportEditorTopToolbar = new Ext.Toolbar({
+    	    title: 'Edit Report',
+    	    items: [
+    	        {
+    	            text: 'Home',
+    	            ui: 'back',
+    	            handler: function () {
+    	            	agendaApp.views.viewPort.setActiveItem('homePanel', {type: 'slide', direction: 'right'});
+    	            }
+    	        },
+    	        { xtype: 'spacer' },
+    	        {
+    	            text: 'Save',
+    	            ui: 'action',
+    	            handler: function () {
+    	                // TODO: Save current note.
+    	            }
+    	        }
+    	    ]
+    	});
+
+    	agendaApp.views.reportEditorBottomToolbar = new Ext.Toolbar({
+    	    dock: 'bottom',
+    	    items: [
+    	        { xtype: 'spacer' },
+    	        {
+    	            iconCls: 'trash',
+    	            iconMask: true,
+    	            handler: function () {
+    	                // TODO: Delete current note.
+    	            }
+    	        }
+    	    ]
+    	});
+
+    	agendaApp.views.reportEditor = new Ext.form.FormPanel({
+    	    id: 'reportEditor',
+    	    items: [
+	            {
+	            	xtype: 'textfield',
+	            	name: 'id',
+	            	label: 'Id',
+	            	disabled: true
+	            	
+	            },
+    	        {
+    	            xtype: 'textfield',
+    	            name: 'title',
+    	            label: 'Title',
+    	            required: true
+    	        },
+    	        {
+    	            xtype: 'textareafield',
+    	            name: 'content',
+    	            label: 'Content'
+    	        }
+    	    ],
+    	    
+    	    dockedItems: [
+    	            agendaApp.views.reportEditorTopToolbar,
+    	            agendaApp.views.reportEditorBottomToolbar
+    	        ]
+    	        
+
+    	});
+    	/*reportEditor end*/
+    	
+    	
+    	/*Read Container*/
+    	/**
+    	 * 
+    	 */
+
+    	agendaApp.views.reportList = new Ext.List({
+    	    id: 'reportList',
+    	    store: 'ReportsStore',
+    	    itemTpl: '<div class="list-item-title">{title}</div>' +
+    	    		 '<div class="list-item-narrative">{content}</div>',
+    	    onItemDisclosure: function (record) {
+    	    		alert('onItemDisclosure');
+    	    	    }
+
+    	});
+
+    	agendaApp.views.reportListToolbar = new Ext.Toolbar({
+    	    id: 'reportListToolbar',
+    	    title: 'Reports',
+    	    layout: 'hbox',
+    	    items: [
+    	        
+    	        {
+    	            id: 'backButton',
+    	            text: 'Home',
+    	            ui: 'back',
+    	            handler: function () {
+    	            	agendaApp.views.viewPort.setActiveItem('homePanel', {type: 'slide', direction: 'right'});
+    	            }
+    	        },
+    	        { xtype: 'spacer' }
+    	    ]
+    	});
+
+    	agendaApp.views.readContainer = new Ext.Panel({
+    		id: 'readContainer',
+    	    fullscreen : true,
+    	    layout : 'fit',
+    	    cardAnimation : 'slide',
+    	    html: "this is read panel",
+    		items: [
+    		        
+    	            ],
+    		dockedItems: [agendaApp.views.reportListToolbar],
+    		items: [agendaApp.views.reportList]
+
+    	});
+
+    	/*Read Container*/
     	
     	var reportButton =  new Ext.Panel({
     		cls: "homeBtn",
@@ -26,7 +144,17 @@ Ext.setup({
 	   	        click: function()
 	   	        {
 	   	        	
-	   	        	this.dom.parentNode.setAttribute("class", "shadow")
+	   	        	var now = new Date();
+	                 var noteId = now.getTime();
+	                 var note = Ext.ModelMgr.create(
+	                     { id: noteId, date: now, title: 'sss', content: 'aaaa' },
+	                     'Report'
+	                 );
+
+	                 agendaApp.views.reportEditor.load(note);
+	                 agendaApp.views.viewPort.setActiveItem("reportEditor", {type: 'slide', direction: 'left'});
+
+
 	   	        	
 	   	        
 	   	        },
@@ -53,9 +181,7 @@ Ext.setup({
 		listeners: {
 	        click: function()
 	        {
-	        	this.dom.setAttribute("class", "shadow")
-	        	
-	        
+	        	agendaApp.views.viewPort.setActiveItem('readContainer', {type: 'slide', direction: 'left'});
 	        },
 	        element: 'body'
 	    },
@@ -125,9 +251,6 @@ Ext.setup({
             flex: 2,
     		style:"",
     		defaults: {
-//    			width: 230,
-//    			height:200,
-//    			margin: 10,
     			style: 'font-size: 0.8em; margin-top: 20%;',
              },
     		items:[
@@ -146,9 +269,6 @@ Ext.setup({
             flex: 2,
     		style:"",
     		defaults: {
-//    			width: 230,
-//    			height:200,
-//    			margin: 10,
     			style: 'font-size: 0.8em ;margin-bottom: 20% ',
              },
     		items:[
@@ -157,114 +277,79 @@ Ext.setup({
     		       ]
     			});
     	
-    	var mainPanel = new Ext.Panel({
-    		fullscreen: true,
+    	agendaApp.views.homeToolbar = new Ext.Toolbar({
+    	    title: 'AgendaList',
+    	    xtype: 'toolbar',
+    	    items: [
+    	        {
+    	        	iconMask: true,
+    	            iconCls: 'action', 
+    	            ui: 'plain',
+    	            handler: function () {
+    	            	alert("are you sure you wanna leave?");
+    	            }
+    	        },
+    	        { xtype: 'spacer' },
+    	        {
+    	        	iconMask: true,
+    	            iconCls: 'refresh', 
+    	            ui: 'plain',
+    	            handler: function () {
+    	                // TODO: Transition to the notes list view.
+    	            }
+    	        },
+    	    ]
+    	});
+    	
+    	
+    	agendaApp.views.home = new Ext.Panel({
+    		id: 'homePanel',
+    		
+    		
     		layout: {
     			type: 'vbox',
-                pack: 'center'
-            },
-            html: 
+    	        pack: 'center'
+    	        	
+    	    },
+    	    html: 
     		"<div style='position:absolute; z-index:0;height:100%; width:100%; text-align: center;'>" +
     			"<img src='images/blue.jpg' style='height:99%; width:99%;'/>" +
-			"</div>",
-            defaults: {
-            	
-            	
-            },
-//            baseCls: 'bg',
+    		"</div>",
+    	    defaults: {
+    	    	
+    	    	
+    	    },
     		items: [
     		        topHbox,
     		        bottomHbox
-                    ],
-            dockedItems: [{
-                xtype: 'toolbar',
-                dock: 'top',
-                defaults: {
-                    ui: 'plain'
-                },
-                scroll: 'horizontal',
-                layout: {
-                    pack: 'center'
-                },
-                defaults: {
-                    iconMask: true,
-                    ui: 'plain',
-                },
-                items: [{
-                    iconCls: 'action',
-                	text: 'asd'
-                	}
-                ]
-            }]
+    	            ],
+    	    dockedItems: [
+    	                  agendaApp.views.homeToolbar
+    	                  ]
     	});
-    	/*
-    	var mainPanel = new Ext.TabPanel({
-            fullscreen: true,
-            // type: 'light',
-            tabBar: {
-                dock: 'bottom',
-                scroll: 'horizontal',
-                sortable: true,
-                layout: {
-                    pack: 'center'
-                }
-            },
-            cls: 'card1',
-            html: 'Both toolbars and tabbars have built-in, ready to use icons. Styling custom icons is no hassle.<p><small>If you cant see all of the buttons below, try scrolling left/right.</small></p>',
-            items: [
-                { iconCls: 'bookmarks', title: 'Bookmarks'},
-                { iconCls: 'download', title: 'Download' },
-                { iconCls: 'favorites', title: 'Favorites' },
-                { iconCls: 'info', title: 'Info' },
-                { iconCls: 'more', title: 'More' },
-                { iconCls: 'search', title: 'Search' },
-                { iconCls: 'settings', title: 'Settings' },
-                { iconCls: 'team', title: 'Team' },
-                { iconCls: 'time', title: 'Time' },
-                { iconCls: 'user', title: 'User' }
-            ],
-            dockedItems: [{
-                xtype: 'toolbar',
-                dock: 'top',
-                defaults: {
-                    ui: 'plain'
-                },
-                scroll: 'horizontal',
-                layout: {
-                    pack: 'center'
-                },
-                defaults: {
-                    iconMask: true,
-                    ui: 'plain'
-                },
-                items: [{
-                    iconCls: 'action'
-                }, {
-                    iconCls: 'add'
-                }, {
-                    iconCls: 'arrow_up'
-                }, {
-                    iconCls: 'arrow_right'
-                }, {
-                    iconCls: 'arrow_down'
-                }, {
-                    iconCls: 'arrow_left'
-                }, {
-                    iconCls: 'compose'
-                }, {
-                    iconCls: 'delete'
-                }, {
-                    iconCls: 'refresh'
-                }, {
-                    iconCls: 'reply'
-                }, {
-                    iconCls: 'search'
-                }, {
-                    iconCls: 'star'
-                }, {
-                    iconCls: 'trash'
-                }]
-            }]
-        });*/
+    	
+    	agendaApp.views.viewPort = new Ext.Panel({
+    		            fullscreen: true,
+    		            layout: 'card',
+    		            cardAnimation: 'slide',
+    		            items: [
+    		                    agendaApp.views.home,
+    		                    agendaApp.views.readContainer,
+    		                    agendaApp.views.reportEditor,
+    		            ]
+    		        });
+
     }
+
+
+
 });
+
+
+
+
+
+
+
+    	
+    	
