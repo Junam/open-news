@@ -1,11 +1,13 @@
 
-var App = new Ext.Application({
+new Ext.Application({
     name : 'agendaApp',
     useLoadMask : true,
     launch : function () {
     	
+    	/*************************************
+    	 * reportEditor - start
+    	 *************************************/
     	
-    	/*reportEditor start*/
     	agendaApp.views.reportEditorTopToolbar = new Ext.Toolbar({
     	    title: 'Edit Report',
     	    items: [
@@ -71,14 +73,14 @@ var App = new Ext.Application({
     	        
 
     	});
-    	/*reportEditor end*/
+    	/*************************************
+    	 * reportEditor - end
+    	 *************************************/
     	
     	
-    	/*Read Container*/
-    	/**
-    	 * 
-    	 */
-
+    	/*************************************
+    	 * Read Container - start
+    	 *************************************/
     	agendaApp.views.reportList = new Ext.List({
     	    id: 'reportList',
     	    store: 'ReportsStore',
@@ -122,8 +124,14 @@ var App = new Ext.Application({
 
     	});
 
-    	/*Read Container*/
+    	/*************************************
+    	 * Read Container - end
+    	 *************************************/
     	
+    	
+    	/*************************************
+    	 * Home - start
+    	 *************************************/
     	var reportButton =  new Ext.Panel({
     		cls: "homeBtn",
     		flex: 1,
@@ -144,6 +152,7 @@ var App = new Ext.Application({
 	   	        click: function()
 	   	        {
 	   	        	
+	   	        	reportButton.addCls("shadow");
 	   	        	var now = new Date();
 	                 var noteId = now.getTime();
 	                 var note = Ext.ModelMgr.create(
@@ -152,15 +161,18 @@ var App = new Ext.Application({
 	                 );
 
 	                 agendaApp.views.reportEditor.load(note);
-	                 agendaApp.views.viewPort.setActiveItem("reportEditor", {type: 'slide', direction: 'left'});
-
-
-	   	        	
-	   	        
+	 	        	setTimeout(showReportPanel, 300);
 	   	        },
 	   	        element: 'body'
 	   	    },
         });
+    	
+    	
+    	function showReportPanel()
+    	{
+    		agendaApp.views.viewPort.setActiveItem("reportEditor", {type: 'slide', direction: 'left'});
+    	}
+    	
     	var readButton =  new Ext.Panel({    		
     		
     		cls: "homeBtn",
@@ -181,11 +193,19 @@ var App = new Ext.Application({
 		listeners: {
 	        click: function()
 	        {
-	        	agendaApp.views.viewPort.setActiveItem('readContainer', {type: 'slide', direction: 'left'});
+	        	readButton.addCls("shadow");
+	        	setTimeout(showReadPanel, 300);
+	        	
 	        },
 	        element: 'body'
 	    },
 	    });
+    	
+    	
+    	function showReadPanel()
+    	{
+    		agendaApp.views.viewPort.setActiveItem('readContainer', {type: 'slide', direction: 'left'});
+    	}
     	
     	var publishButton =  new Ext.Panel({
     		cls: "homeBtn",
@@ -206,9 +226,7 @@ var App = new Ext.Application({
 	   		listeners: {
 	   	        click: function()
 	   	        {
-	   	        	this.dom.setAttribute("class", "shadow")
-	   	        	
-	   	        
+	   	        	publishButton.addCls("shadow");
 	   	        },
 	   	        element: 'body'
 	   	    },
@@ -233,7 +251,7 @@ var App = new Ext.Application({
 	   		listeners: {
 	   	        click: function()
 	   	        {
-	   	        	this.dom.setAttribute("class", "shadow")
+	   	        	followUpButton.addCls("shadow");
 	   	        	
 	   	        
 	   	        },
@@ -280,6 +298,10 @@ var App = new Ext.Application({
     	agendaApp.views.homeToolbar = new Ext.Toolbar({
     	    title: 'AgendaList',
     	    xtype: 'toolbar',
+    	    cls: "home-toolbar",
+    	    defaults: {
+    			style: 'font-size: 0.6em',
+             },
     	    items: [
     	        {
     	        	iconMask: true,
@@ -311,6 +333,7 @@ var App = new Ext.Application({
     	        pack: 'center'
     	        	
     	    },
+//    	    cls: "bg",
     	    html: 
     		"<div style='position:absolute; z-index:0;height:100%; width:100%; text-align: center;'>" +
     			"<img src='images/blue.jpg' style='height:99%; width:99%;'/>" +
@@ -319,6 +342,15 @@ var App = new Ext.Application({
     	    	
     	    	
     	    },
+    	    listeners:{
+    	    	activate : function(panel){
+
+    	    		readButton.removeCls("shadow");
+    	    		reportButton.removeCls("shadow");
+    	    		publishButton.removeCls("shadow");
+    	    		followUpButton.removeCls("shadow");
+    	    	}
+    	      },
     		items: [
     		        topHbox,
     		        bottomHbox
@@ -327,6 +359,9 @@ var App = new Ext.Application({
     	                  agendaApp.views.homeToolbar
     	                  ]
     	});
+    	/*************************************
+    	 * Home - end
+    	 *************************************/
     	
     	agendaApp.views.viewPort = new Ext.Panel({
     		            fullscreen: true,

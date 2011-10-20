@@ -1,6 +1,14 @@
+/*flicker screen for slide cards bug fix
+.x-panel {
+    -webkit-backface-visibility: hidden;
+}
+.exit-icon {-webkit-mask-box-image: url('../images/read.png');}
+*/
 .bg
 {
-	background-image: url(../images/blue.jpg);
+	/*background-image: url(../images/blue.jpg);*/
+	/*background-color: #111111 ;
+	color: #white;*/
 }
 
 .homeBtn
@@ -15,13 +23,25 @@
 }
 .home-btn-img
 {
-	height:70%;
+	height:45%;
 }
 .shadow
 {
 	 box-shadow: 0 0 15px #0152A2;
-	 
+	 background-image: url(../images/glow.png);
+	 background-repeat: repeat;
 }
+.home-toolbar .x-toolbar-title {
+	font-size: 0.8em;
+	font-weight: normal;
+}
+.home-toolbar
+{
+	height: 33px;
+	background-color: #222222;
+	background-image: none;
+}
+
 
 .home-btn-label
 {
