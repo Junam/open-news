@@ -1,12 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dip"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="100dip"
+            android:layout_height="40dip"
+            android:layout_weight="0.01"
+            android:background="@drawable/agendalist_home_logo"
+            android:orientation="vertical" android:layout_gravity="right">
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/read_button_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:background="#181818"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:paddingBottom="1dip" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout09"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout07"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dip"
+                    android:clickable="false"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/readTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/read_but_label"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="40dip"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout08"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/TextView08"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dip"
+                            android:text="@string/read_but_sub"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="15dip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout06"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/TextView11"
+                            android:layout_width="14dip"
+                            android:layout_height="14dip"
+                            android:layout_gravity="top"
+                            android:background="@drawable/badge_icon"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="2"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="#000"
+                            android:textSize="11dip" android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/TextView09"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dip"
+                            android:text="@string/read_button_notification"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="15dip" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/write_button_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:background="#181818"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:paddingBottom="1dip" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout05"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout03"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dip"
+                    android:clickable="false"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/writeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/write_but_label"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="40dip"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/TextView05"
+                            android:layout_width="14dip"
+                            android:layout_height="14dip"
+                            android:layout_gravity="top"
+                            android:background="@drawable/badge_icon"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="4"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="#000"
+                            android:textSize="11dip" android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/TextView02"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dip"
+                            android:text="@string/write_but_sub"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="15dip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/TextView06"
+                            android:layout_width="14dip"
+                            android:layout_height="14dip"
+                            android:layout_gravity="top"
+                            android:background="@drawable/badge_icon"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="3"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="#000"
+                            android:textSize="11dip" android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/TextView03"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dip"
+                            android:text="@string/write_button_notification2"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="15dip" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/publish_button_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:background="#181818"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:paddingBottom="1dip" >
+
+            <LinearLayout
+                android:id="@+id/home_read_but_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dip"
+                    android:clickable="false"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/publishTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/publish_but_label"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="40dip"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/TextView16"
+                            android:layout_width="14dip"
+                            android:layout_height="14dip"
+                            android:layout_gravity="top"
+                            android:background="@drawable/badge_icon"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="96"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="#000"
+                            android:textSize="11dip" android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/TextView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dip"
+                            android:text="@string/publish_but_notification1"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="15dip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/TextView04"
+                            android:layout_width="14dip"
+                            android:layout_height="14dip"
+                            android:layout_gravity="top"
+                            android:background="@drawable/badge_icon"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="9"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="#000"
+                            android:textSize="11dip" android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/TextView07"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dip"
+                            android:text="@string/publish_button_notification2"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="15dip" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
